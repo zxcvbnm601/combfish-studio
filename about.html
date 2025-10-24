@@ -6,27 +6,72 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>关于我们 | 梳子鱼音乐工作室</title>
   <style>
-    :root{--c1:#111;--c2:#222;--c3:#6df;--c4:#eee}
+    :root{--c1:#111;--c2:#222;--c3:#00ffff;--c4:#eee}
     *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
     body{background:var(--c1);color:var(--c4);line-height:1.8}
-    nav{display:flex;justify-content:center;gap:30px;padding:20px 0;background:var(--c2)}
-    nav a{color:var(--c4);text-decoration:none;font-weight:500}
+    nav{position:sticky;top:0;background:rgba(22,22,22,.6);backdrop-filter:blur(10px);display:flex;justify-content:center;gap:30px;padding:18px 0}
+    nav a{color:var(--c4);text-decoration:none;font-weight:500;transition:.3s}
     nav a:hover{color:var(--c3)}
     .sec{max-width:800px;margin:auto;padding:60px 20px}
     h2{margin-bottom:20px;color:var(--c3)}
-    footer{background:var(--c2);text-align:center;padding:30px 20px;font-size:.9em;color:#999}
+    .glass{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;backdrop-filter:blur(10px);padding:30px;margin-bottom:30px}
+    .eq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:20px}
+    .eq-card img{width:100%;border-radius:8px;box-shadow:0 5px 15px rgba(0,0,0,.5)}
+    .review{background:rgba(0,255,255,.05);border-left:4px solid var(--c3);padding:15px 20px;margin:15px 0;border-radius:6px}
+    footer{background:rgba(22,22,22,.7);text-align:center;padding:25px 10px;font-size:.9em;color:#aaa}
+    @media(max-width:600px){.sec{padding:40px 15px}}
   </style>
 </head><body>
   <nav>
     <a href="index.html">首页</a><a href="about.html">关于我们</a><a href="contact.html">联系合作</a>
   </nav>
+
   <section class="sec">
-    <h2>关于我们</h2>
-    <p>梳子鱼音乐工作室成立于 2025 年，专注于独立音乐制作服务：编曲、混音、影视配乐。我们坚信「好音乐不应被预算束缚」，因此提供亲民价格与专业品质。</p>
-    <h2>营业时间</h2>
-    <p>全天 24 h 接单，节假日无休。平均交付周期 2-3 个工作日，加急可协商。</p>
+    <h2>我们的故事</h2>
+    <div class="glass">
+      <p>梳子鱼音乐工作室诞生于 2025 年，由一群热爱独立音乐的制作人、混音师与影视配乐人组建。我们相信「好音乐不应被预算束缚」，因此以亲民价格提供商业级品质，服务已覆盖 300+ 独立音乐人、Vlogger、游戏开发者。</p>
+    </div>
   </section>
+
+  <section class="sec">
+    <h2>服务与流程</h2>
+    <div class="glass">
+      <ol>
+        <li>需求沟通：在线表单 / 邮箱 / 电话，24 h 内响应</li>
+        <li>报价与档期：明确价格与交付日，支持加急</li>
+        <li>预付 30%：支付宝 / 微信 / 对公转账</li>
+        <li>制作阶段：实时发送小样，无限次微调（交付前）</li>
+        <li>交付尾款：提供 WAV + 分轨 + 工程备份</li>
+        <li>售后支持：30 天内小修改免费</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>硬件与软件</h2>
+    <div class="eq-grid">
+      <div class="eq-card"><img src="https://source.unsplash.com/800x600/?audio-interface" alt="音频接口"><h3>音频接口</h3><p>Apogee / RME 高清录制</p></div>
+      <div class="eq-card"><img src="https://source.unsplash.com/800x600/?studio-monitors" alt="监听音箱"><h3>监听系统</h3><p>Adam A7X + 声学装修</p></div>
+      <div class="eq-card"><img src="https://source.unsplash.com/800x600/?midi-keyboard" alt="MIDI 键盘"><h3>MIDI 设备</h3><p>88 键全配重 + 多轨控制器</p></div>
+      <div class="eq-card"><img src="https://source.unsplash.com/800x600/?microphone,studio" alt="麦克风"><h3>麦克风群</h3><p>Neumann / AKG / Shure 全品类</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>客户评价</h2>
+    <div class="review">「交付快，沟通零障碍，编曲完全符合我想要的氛围！」—— 独立歌手 @小雀</div>
+    <div class="review">「配乐让整部短片质感提升一个档次，价格却只有市面一半。」—— Vlogger @阿卓</div>
+    <div class="review">「30 天内免费小改，真的改到满意为止，超良心。」—— 游戏开发者 @洛洛</div>
+  </section>
+
+  <section class="sec">
+    <h2>营业时间</h2>
+    <div class="glass">全天 24 小时接单，节假日无休。平均交付 2-3 工作日，加急最快 6 小时。</div>
+  </section>
+
   <footer>
     © 2025 梳子鱼音乐工作室　All Rights Reserved.
   </footer>
 </body></html>
+
+
