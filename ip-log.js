@@ -9,7 +9,7 @@ window.onload = async function() {
   // 你的仓库与令牌配置（已适配）
   const GITHUB_USERNAME = "zxcvbnm601";
   const REPO_NAME = "combfish-studio";
-  const PERSONAL_TOKEN = "你之前生成的令牌（需手动填入此处）"; // 务必替换为你的实际令牌
+  const PERSONAL_TOKEN = "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"; // 务必替换为你的实际令牌
 
   // 调用GitHub API写入日志
   const apiUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/visitor-log.txt`;
