@@ -1,39 +1,47 @@
 window.onload = async function() {
-  // 1. 自动获取访客IP
+  // 获取访客IP
   const ipRes = await fetch('https://api.ipify.org?format=json');
   const { ip } = await ipRes.json();
 
-  // 2. 收集访问信息（时间、IP、页面）
-  const logInfo = {
-    time: new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' }),
-    ip: ip,
-    page: window.location.href
-  };
+  // 拼接日志信息
+  const logInfo = `${new Date().toLocaleString()}|${ip}|${window.location.href}\n`;
 
-  // 3. 自动写入日志到仓库
-  const githubApi = 'https://api.github.com/repos/zxcvbnm601/combfish-studio/contents/visitor-log.txt';
-  await fetch(githubApi, {
-    method: 'PUT',
-    headers: {
-      Authorization: 'token github_pat_118ZGf6YVjS4BlHcm2AXDs_ZALWdvEoChuI7j5ML0R7HXJqLuecRF1UTfJhvaLPLPGt65QvpI3Th3',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      message: `Add visitor log: ${ip}`,
-      content: btoa(`${logInfo.time}|${logInfo.ip}|${logInfo.page}\n`),
-      sha: await getFileSha()
-    })
-  });
+  // 你的仓库与令牌配置（已适配）
+  const GITHUB_USERNAME = "zxcvbnm601";
+  const REPO_NAME = "combfish-studio";
+  const PERSONAL_TOKEN = "你之前生成的令牌（需手动填入此处）"; // 务必替换为你的实际令牌
 
-  // 4. 管理员带?admin=1访问时弹窗提示
-  if (window.location.search.includes('?admin=1')) {
-    alert('IP记录成功！去仓库看visitor-log.txt');
+  // 调用GitHub API写入日志
+  const apiUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/visitor-log.txt`;
+
+  try {
+    const fileRes = await fetch(apiUrl, {
+      headers: {
+        Authorization: `token ${PERSONAL_TOKEN}`,
+        "Accept": "application/vnd.github.v3+json"
+      }
+    });
+    const fileData = await fileRes.json();
+    const newContent = btoa(fileData.content + logInfo);
+    
+    await fetch(apiUrl, {
+      method: "PUT",
+      headers: {
+        Authorization: `token ${PERSONAL_TOKEN}`,
+        "Content-Type": "application/json",
+        "Accept": "application/vnd.github.v3+json"
+      },
+      body: JSON.stringify({
+        message: "Add visitor log",
+        content: newContent,
+        sha: fileData.sha
+      })
+    });
+
+    if (window.location.search.includes("?admin=1")) {
+      alert("IP记录成功！");
+    }
+  } catch (err) {
+    console.error("记录失败：", err);
   }
 };
-
-// 辅助函数：获取日志文件SHA值
-async function getFileSha() {
-  const res = await fetch('https://api.github.com/repos/zxcvbnm601/combfish-studio/contents/visitor-log.txt');
-  const data = await res.json();
-  return data.sha;
-}
