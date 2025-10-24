@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>入伙招募 | 梳子鱼音乐工作室</title>
+  <style>
+    :root{--c1:#111;--c2:#161616;--c3:#00ffff;--c4:#fff;--glow:0 0 10px var(--c3),0 0 20px var(--c3)}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+    body{background:var(--c1);color:var(--c4);line-height:1.8}
+    /* 背景图+遮罩 */
+    .bg{position:fixed;inset:0;background:url("https://source.unsplash.com/1920x1080/?studio,mixer") center/cover no-repeat;z-index:-2}
+    .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,13,13,.9),rgba(22,22,22,.8))}
+    /* 导航玻璃 */
+    nav{position:sticky;top:0;background:rgba(22,22,22,.4);backdrop-filter:blur(12px);display:flex;justify-content:center;gap:30px;padding:18px 0;z-index:10}
+    nav a{color:var(--c4);text-decoration:none;font-weight:500;transition:.3s}
+    nav a:hover{color:var(--c3)}
+    /* 内容区 */
+    .sec{max-width:800px;margin:auto;padding:80px 20px;position:relative;z-index:2}
+    h2{text-align:center;font-size:2rem;margin-bottom:30px;color:var(--c3);text-shadow:var(--glow)}
+    .glass{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:16px;backdrop-filter:blur(15px);padding:30px;margin-bottom:30px}
+    .join-list{list-style:none;padding-left:0}
+    .join-list li{padding:8px 0;border-left:4px solid var(--c3);padding-left:15px;margin:10px 0}
+    .btn-glow{display:inline-block;background:var(--c3);color:var(--c1);padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;transition:.3s;box-shadow:0 0 15px var(--c3)}
+    .btn-glow:hover{transform:translateY(-2px);box-shadow:var(--glow)}
+    .eq-img{width:100%;border-radius:12px;margin-top:20px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+    footer{background:rgba(22,22,22,.5);text-align:center;padding:25px 10px;font-size:.9em;color:#aaa}
+    @media(max-width:600px){.sec{padding:60px 15px}}
+  </style>
+</head><body>
+  <div class="bg"></div>
+  <nav>
+    <a href="index.html">首页</a><a href="about.html">关于我们</a><a href="contact.html">联系合作</a><a href="join.html">入伙招募</a>
+  </nav>
+
+  <section class="sec">
+    <h2>入伙招募</h2>
+    <div class="glass">
+      <h3>我们在找这样的你</h3>
+      <ul class="join-list">
+        <li>独立编曲人：擅长 Pop / Rock / EDM / 国风至少一类</li>
+        <li>混音/母带师：能熟练操作 Pro Tools / Cubase / Studio One，有作品链接</li>
+        <li>影视配乐人：会写弦乐、合成器氛围，懂情绪同步</li>
+        <li>远程亦可：地点不限，时区不限，项目制分成</li>
+      </ul>
+    </div>
+
+    <div class="glass">
+      <h3>你将获得</h3>
+      <ul class="join-list">
+        <li>70% 项目分成（无平台抽成）</li>
+        <li>免费使用工作室硬件（音频接口 / 监听 / 乐器）</li>
+        <li>24 h 全球客户订单推送</li>
+        <li>作品署名 + 官网展示 + 推广扶持</li>
+        <li>弹性工作时间，远程协作工具全套</li>
+      </ul>
+    </div>
+
+    <div class="glass">
+      <h3>投递方式</h3>
+      <p>请发送以下资料至：<a href="mailto:3156437167@qq.com" style="color:var(--c3)">3156437167@qq.com</a></p>
+      <ol class="join-list">
+        <li>个人简历（含联系方式）</li>
+        <li>代表性作品 2-3 首（WAV + 分轨截图）</li>
+        <li>可承接类型 & 档期说明</li>
+      </ol>
+      <div style="text-align:center;margin-top:25px">
+        <a class="btn-glow" href="mailto:3156437167@qq.com?subject=入伙申请-昵称">立即投递</a>
+      </div>
+    </div>
+
+    <img class="eq-img" src="https://source.unsplash.com/1600x900/?recording-studio,desk" alt="Studio Desk">
+  </section>
+
+  <footer>
+    © 2025 梳子鱼音乐工作室　All Rights Reserved.
+  </footer>
+</body></html>
