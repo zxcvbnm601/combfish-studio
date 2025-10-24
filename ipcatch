@@ -1,0 +1,19 @@
+addEventListener('fetch', event => {
+  event.respondWith(handle(event.request))
+})
+
+async function handle(req) {
+  const ip   = req.headers.get('CF-Connecting-IP');
+  const ua   = req.headers.get('User-Agent');
+  const now  = new Date().toISOString();
+  let arr = JSON.parse(await IP_KV.get('ip') || '[]');
+  arr.push({ip, ua, time: now});
+  if (arr.length > 5000) arr = arr.slice(-4000);
+  await IP_KV.put('ip', JSON.stringify(arr));
+  // 返回 1×1 透明 gif
+  const gif = 'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+  return new Response(atob(gif), {
+    status: 200,
+    headers:{'Content-Type':'image/gif','Cache-Control':'no-store'}
+  });
+}
