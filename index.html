@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>梳子鱼音乐工作室 | 首页</title>
+  <style>
+    :root{--c1:#111;--c2:#222;--c3:#6df;--c4:#eee}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+    body{background:var(--c1);color:var(--c4);line-height:1.6}
+    nav{display:flex;justify-content:center;gap:30px;padding:20px 0;background:var(--c2)}
+    nav a{color:var(--c4);text-decoration:none;font-weight:500}
+    nav a:hover{color:var(--c3)}
+    .hero{height:70vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:url("https://source.unsplash.com/1600x900/?music-studio,abstract") center/cover no-repeat;position:relative}
+    .hero::after{content:"";position:absolute;inset:0;background:#0006}
+    .hero>*{position:relative;z-index:2}
+    h1{font-size:3em;margin-bottom:10px}
+    .btn{background:var(--c3);color:var(--c1);padding:12px 30px;border-radius:30px;text-decoration:none;display:inline-block;margin-top:20px;font-weight:600}
+    .sec{padding:60px 20px;max-width:900px;margin:auto}
+    .cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+    .card{background:var(--c2);padding:30px;border-radius:10px;flex:1 1 250px;text-align:center}
+    footer{background:var(--c2);text-align:center;padding:30px 20px;font-size:.9em;color:#999}
+  </style>
+</head><body>
+  <nav>
+    <a href="index.html">首页</a><a href="about.html">关于我们</a><a href="contact.html">联系合作</a>
+  </nav>
+  <header class="hero">
+    <h1>梳子鱼音乐工作室</h1>
+    <p>全天营业 · 专业编曲 / 混音 / 配乐</p>
+    <a class="btn" href="contact.html">立即合作</a>
+  </header>
+  <section class="sec">
+    <h2>服务与价格</h2>
+    <div class="cards">
+      <div class="card"><h3>编曲</h3>600 元/首</div>
+      <div class="card"><h3>混音</h3>300 元/首</div>
+      <div class="card"><h3>配乐</h3>1500 元/min</div>
+    </div>
+  </section>
+  <footer>
+    © 2025 梳子鱼音乐工作室　All Rights Reserved.
+  </footer>
+</body></html>
