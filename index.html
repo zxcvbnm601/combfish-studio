@@ -42,4 +42,58 @@
     <div class="card"><h3>配乐</h3><p>1500 元/min</p></div>
   </section>
   <footer>© 2025 梳子鱼音乐工作室　All Rights Reserved.</footer>
+<!-- 专辑弹窗《梨花泪》-->
+<div id="albumPopup" style="position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;display:flex;align-items:center;justify-content:center;">
+  <div style="background:rgba(255,255,255,.1);border:1px solid #00ffff;border-radius:20px;backdrop-filter:blur(20px);padding:40px;text-align:center;max-width:90%;width:550px;box-shadow:0 0 40px #00ffff;">
+
+    <!-- 封面图 -->
+    <img src="https://source.unsplash.com/600x600/?chinese,orchid" style="width:160px;height:160px;border-radius:50%;border:3px solid #00ffff;box-shadow:0 0 20px #00ffff;margin-bottom:20px;">
+
+    <!-- 标题 -->
+    <h2 style="color:#00ffff;margin-bottom:10px;text-shadow:0 0 10px #00ffff;">🎵 新专辑发布</h2>
+    <h3 style="color:#fff;font-size:1.8rem;margin-bottom:10px;">《梨花泪》</h3>
+
+    <!-- 风格标签 -->
+    <p style="color:#ccc;font-size:1rem;margin-bottom:10px;">古风｜电子｜古典</p>
+
+    <!-- 倒计时 -->
+    <p id="countdown" style="color:#fff;font-size:1.1rem;margin-bottom:20px;">距上架还有：<span style="color:#00ffff;font-weight:bold;">加载中</span></p>
+
+    <!-- 新文案（100字+原件已发送） -->
+    <p style="color:#ccc;margin-bottom:20px;">
+      《梨花泪》是梳子鱼音乐工作室首支原创单曲，融合古风雅韵、电子律动与古典交响，以梨花为意象，描绘离愁别绪与希望重生。下周三网易云独家上架，诚邀各位提前品鉴，点赞评论收藏一键三连，让东方美学在音符中绽放！<br><br>
+      <strong style="color:#00ffff;">原件已发送给各位好友，记得去网易云支持哦！</strong>
+    </p>
+
+    <!-- 突出一句：哈哈，你还真来看名单了... -->
+    <p style="color:#00ffff;font-size:1.1rem;font-weight:bold;margin-bottom:20px;text-shadow:0 0 10px #00ffff;">
+      哈哈，你还真来看名单了，好朋友都有的，今晚就给你们发！
+    </p>
+
+    <!-- 双按钮 -->
+    <button onclick="copyText('《梨花泪》古风+电子+古典，下周三上架网易云，记得点赞评论加收藏！首周评论破百抽签名 WAV！')" style="background:#00ffff;color:#111;border:none;padding:12px 24px;border-radius:8px;font-weight:600;cursor:pointer;margin-right:10px;box-shadow:0 0 10px #00ffff;">一键复制</button>
+    <button onclick="document.getElementById('albumPopup').style.display='none'" style="background:transparent;color:#00ffff;border:1px solid #00ffff;padding:12px 24px;border-radius:8px;font-weight:600;cursor:pointer;">关闭</button>
+  </div>
+</div>
+<script>
+  function copyText(text) {
+    navigator.clipboard.writeText(text).then(()=>{
+      alert('已复制：'+text);
+    },()=>{
+      alert('复制失败，请手动复制');
+    });
+  }
+  // 倒计时
+  const target = new Date();
+  target.setDate(target.getDate() + (3 - target.getDay() + 7) % 7 + 3); // 下周三
+  const countdown = document.querySelector('#countdown span');
+  setInterval(()=>{
+    const now = new Date();
+    const diff = target - now;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    countdown.textContent = `${d} 天 ${h} 时 ${m} 分`;
+  }, 60000);
+</script>
 </body></html>
