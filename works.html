@@ -1,0 +1,105 @@
++<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"3NutZgJKObmbCE2b",ck:"3NutZgJKObmbCE2b"})</script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>作品展示 | 梳子鱼音乐工作室</title>
+  <style>
+    :root{--c1:#111;--c2:#161616;--c3:#00ffff;--c4:#fff;--glow:0 0 10px var(--c3),0 0 20px var(--c3)}
+    body{background:var(--c1);color:var(--c4);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+    nav{position:sticky;top:0;background:rgba(22,22,22,.4);backdrop-filter:blur(12px);display:flex;justify-content:center;gap:30px;padding:18px 0;z-index:10}
+    nav a{color:var(--c4);text-decoration:none;font-weight:500;transition:.3s}
+    nav a:hover{color:var(--c3)}
+    .sec{max-width:800px;margin:auto;padding:80px 20px}
+    h2{margin-bottom:20px;color:var(--c3);text-shadow:var(--glow)}
+    .upload-box{background:rgba(255,255,255,.1);border:1px solid #00ffff;border-radius:16px;padding:40px;text-align:center;margin-bottom:30px;backdrop-filter:blur(10px)}
+    .player-box{background:rgba(0,255,255,.05);border-left:4px solid var(--c3);border-radius:8px;padding:20px;margin:20px 0}
+    audio{width:100%;border-radius:8px;box-shadow:0 0 15px rgba(0,255,255,.3)}
+    .playlist{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:16px;backdrop-filter:blur(10px);padding:20px;margin-top:20px}
+    .track{display:flex;align-items:center;justify-content:space-between;padding:10px 15px;border-radius:8px;cursor:pointer;transition:.3s}
+    .track:hover{background:rgba(255,255,255,.1)}
+    .track.active{background:rgba(0,255,255,.2)}
+    .track-info{flex:1}
+    .track-title{color:#fff;font-weight:500}
+    .track-time{color:#ccc;font-size:.9rem}
+    .btn-glow{display:inline-block;background:var(--c3);color:var(--c1);padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;transition:.3s;box-shadow:0 0 10px var(--c3)}
+    .btn-glow:hover{transform:translateY(-3px);box-shadow:var(--glow)}
+    footer{background:rgba(22,22,22,.5);text-align:center;padding:25px 10px;font-size:.9em;color:#aaa}
+    @media(max-width:600px){.sec{padding:60px 15px}}
+  </style>
+</head><body>
+  <nav><a href="index.html">首页</a><a href="about.html">关于我们</a><a href="join.html">企业招聘</a><a href="contact.html">联系</a><a href="works.html">作品展示</a></nav>
+
+  <section class="sec">
+    <h2>作品展示（全民上传）</h2>
+    <div class="upload-box">
+      <label>上传音频（mp3/wav/ogg）</label>
+      <input type="file" id="audioFile" accept="audio/mp3,audio/wav,audio/ogg" onchange="addTrack()">
+      <button onclick="copyList()" class="btn-glow" style="margin-top:10px;">复制播放列表</button>
+    </div>
+
+    <!-- 播放器 -->
+    <div class="player-box">
+      <audio id="player" controls></audio>
+    </div>
+
+    <!-- 播放列表 -->
+    <div id="playlist" class="playlist">
+      <div class="track" onclick="playTrack(0)">
+        <div class="track-info"><div class="track-title">暂无作品</div></div>
+        <div class="track-time">--:--</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 梳子鱼音乐工作室　All Rights Reserved.</footer>
+
+  <script>
+    let tracks = [];
+    let current = -1;
+
+    function addTrack() {
+      const file = document.getElementById('audioFile').files[0];
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+      const name = file.name.replace(/\.(mp3|wav|ogg)$/i, '');
+      tracks.push({name: name, url: url, time: '--:--'});
+      renderPlaylist();
+      if (current === -1) playTrack(0);
+    }
+
+    function renderPlaylist() {
+      const list = document.getElementById('playlist');
+      list.innerHTML = '';
+      tracks.forEach((t, i) => {
+        const div = document.createElement('div');
+        div.className = 'track' + (i === current ? ' active' : '');
+        div.onclick = () => playTrack(i);
+        div.innerHTML = `
+          <div class="track-info"><div class="track-title">${t.name}</div></div>
+          <div class="track-time">${t.time}</div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    function playTrack(index) {
+      current = index;
+      const player = document.getElementById('player');
+      player.src = tracks[index].url;
+      player.play();
+      renderPlaylist();
+    }
+
+    function copyList() {
+      const list = tracks.map(t => t.name).join('\n');
+      navigator.clipboard.writeText(list).then(()=>{
+        alert('播放列表已复制！');
+      },()=>{
+        alert('复制失败，请手动复制');
+      });
+    }
+  </script>
+</body></html>
