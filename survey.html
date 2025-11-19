@@ -30,24 +30,24 @@
     <h2>梳子鱼音乐制作报表问卷</h2>
     <form class="glass" onsubmit="sendForm(event)">
       <div class="form-group">
-        <label>微信昵称</label>
-        <input type="text" name="wechat" placeholder="例：梳子鱼" required>
+        <label>音乐风格</label>
+        <input type="text" name="wechat" placeholder="例：古风" required>
       </div>
       <div class="form-group">
-        <label>对工作室的态度（一句话）</label>
-        <input type="text" name="attitude" placeholder="例：专业，期待" required>
+        <label>伴奏要求</label>
+        <input type="text" name="attitude" placeholder="例：古筝，808，钢琴" required>
       </div>
       <div class="form-group">
-        <label>期望值</label>
-        <textarea name="expect" rows="3" placeholder="例：100%" required></textarea>
+        <label>节奏类型</label>
+        <textarea name="expect" rows="3" placeholder="例：欢快，空灵" required></textarea>
       </div>
       <div class="form-group">
         <label>联系方式（电话）</label>
         <input type="text" name="contact" placeholder="例：14787417270 " required>
       </div>
       <div class="form-group">
-        <label>为什么喜欢音乐？</label>
-        <textarea name="reason" rows="4" placeholder="例：音乐能让我放松，也想做出自己的歌" required></textarea>
+        <label>期望耗时</label>
+        <textarea name="reason" rows="4" placeholder="例：三个工作日" required></textarea>
       </div>
       <button type="submit" class="btn-submit">提交问卷</button>
     </form>
@@ -62,7 +62,7 @@
       const expect = e.target.expect.value;
       const contact = e.target.contact.value;
       const reason = e.target.reason.value;
-      const body = `微信昵称：${wechat}\n对工作室态度：${attitude}\n期望值：${expect}\n联系方式：${contact}\n为什么喜欢音乐：${reason}\n提交时间：${new Date().toLocaleString()}`;
+      const body = `音乐风格：${wechat}\n伴奏要求：${attitude}\n节奏类型：${expect}\n联系方式：${contact}\n为期望耗时：${reason}\n提交时间：${new Date().toLocaleString()}`;
 
       fetch('https://formsubmit.co/ajax/3156437167@qq.com', {
         method: 'POST',
